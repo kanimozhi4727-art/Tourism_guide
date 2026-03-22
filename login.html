@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Guide - Login</title>
+    <!-- Link to external Google Fonts for clean, modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link 
+        rel="stylesheet" 
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+    <script 
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+</head>
+<body>
+    <!-- Main content area for semantic structure -->
+    <main class="login-container">
+        <!-- Centered login card (the "box") -->
+        <section class="login-card">
+            <!-- Title of the app -->
+            <h1 class="login-title">Tourism Guide</h1>
+            <!-- Login form with labeled inputs and button -->
+            <form class="login-form">
+                <!-- Name input: Label on left, input on right -->
+                <div class="input-group">
+                    <label for="name" class="input-label">Name:</label>
+                    <input type="text" id="name" class="login-input" placeholder="Enter your name" required>
+                </div>
+                <!-- Email input: Label on left, input on right -->
+                <div class="input-group">
+                    <label for="email" class="input-label">Email:</label>
+                    <input type="email" id="email" class="login-input" placeholder="Enter your email" required>
+                </div>
+                <!-- Password input: Label on left, input on right -->
+                <div class="input-group">
+                    <label for="password" class="input-label">Password:</label>
+                    <input type="password" id="password" class="login-input" placeholder="Enter your password" required>
+                </div>
+                <!-- Login button -->
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </section>
+    </main>
+    <!-- Link to the optional JS file for dummy login action -->
+    <script src="login.js"></script>
+</body>
+</html>

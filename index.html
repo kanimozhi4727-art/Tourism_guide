@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Guide - Main Page</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+<body>
+
+<div class="star-layer"></div>
+<div class="darkTheme"></div>
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="nav-container">
+        <!-- PROFILE ICON: PASTE IT HERE -->
+        <div class="nav-item profile" id="profileBtn">
+            <img src="profile.jpg" alt="Profile" class="profile-icon">
+        </div>
+
+        <!-- Other navigation items -->
+        <div class="nav-item active" id="homeBtn">Home</div>
+        <div class="nav-item" id="wrapBtn">Wrap</div>
+        <div class="nav-item" id="connectionsBtn">Connections</div>
+    </div>
+</nav>
+
+<!-- PROFILE SIDE PANEL -->
+<div id="profilePanel" class="profile-panel">
+
+    <h2>Profile</h2>
+
+    <div class="profile-section personal-info">
+    <h3>Personal Info</h3>
+    <label>Name:</label>
+    <input type="text" id="userName" placeholder="Enter your name">
+    
+    <label>Age:</label>
+    <input type="number" id="userAge" placeholder="Enter your age">
+    
+    <label>Blood Group:</label>
+    <input type="text" id="userBlood" placeholder="O+">
+    
+    <label>Nationality:</label>
+    <input type="text" id="userNationality" placeholder="Indian">
+    
+    <label>Residence:</label>
+    <input type="text" id="userResidence" placeholder="Chennai">
+
+    
+    <label>Phone:</label>
+    <input type="tel" id="userPhone" placeholder="+91 9876543210">
+    
+    <label>Connector's name:</label>
+    <input type="text" id="userConnectorName" placeholder="Enter connector's name">
+    
+    <label>Connector's phone:</label>
+    <input type="tel" id="userConnectorPhone" placeholder="+91 9677231174">
+
+    <label>Email:</label>
+    <input type="text" id="usermail" placeholder="Enter your email">
+</div>
+<button onclick="saveProfile()" class="save-btn">Save Profile</button>
+    <div class="profile-section">
+        <h3>Settings</h3>
+        <label><input type="checkbox" id="darkTheme"> Dark Theme</label><br>
+        <label><input type="checkbox" checked> Notifications</label>
+    </div>
+
+    <div class="profile-section">
+        <h3>QR Code Generator</h3>
+        <p>Please take a copy and paste it in your phone case</p>
+        <div id="qrCode" class="qr-placeholder"></div>
+        <button id="generateQR">Generate QR</button>
+    </div>
+
+
+    <div class="profile-section">
+        <h3>About</h3>
+        <p>About the app placeholder.</p>
+    </div>
+
+    <div class="profile-section">
+        <h3>Contact Us</h3>
+        <p>Email: kanimozhi4727@gmail.com</p>
+    </div>
+
+</div>
+
+<!-- HOME SECTION -->
+<section class="page-section active" id="homeSection">
+
+    <!-- ✅ SOS GLOBAL BUTTON -->
+    <button id="sosBtn" class="sos-btn">SOS</button>
+
+    <div id="sosPopup" class="sos-popup hidden">
+        <h3>🚨 Emergency Help</h3>
+
+        <a href="tel:112" class="sos-option">📞 Call 112</a>
+        <a id="favCall" href="#" class="sos-option">❤️ Call Favourite</a>
+
+        <button id="closeSOS" class="close-sos">Close</button>
+    </div>
+
+    <!-- WEATHER CARD -->
+    <div class="weather-box" id="weatherBox">
+        <div class="weather-top">
+            <img id="weatherIcon"
+                src="https://cdn-icons-png.flaticon.com/512/869/869869.png"
+                alt="weather">
+            <div>
+                <h3 id="temperature">--°C</h3>
+                <p id="weatherCondition">Loading...</p>
+            </div>
+        </div>
+        <p class="location" id="weatherLocation">📍 Detecting location...</p>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-bar">
+        <input type="text" id="homeSearchInput" placeholder="Search for places, tours...">
+        <button id="homeSearchBtn">Search</button>
+    </div>
+    <div id="placeResult" class="result-box hidden">
+        <h2 id="placeTitle"></h2>
+        <p id="placeInfo"></p>
+        <a id="wikiLink" target="_blank"></a>
+</div>
+
+    <!-- RESULT AREA -->
+    <div class="home-result" id="homeResult">
+        <!-- info will appear here -->
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="explore-section">
+        <h2 class="explore-title">Explore Your Journey</h2>
+    </div>
+
+    <!-- SPINNING CIRCLE -->
+    <div class="spinning-circle">
+
+        <div class="orbit-image ooty" data-place="ooty">
+            <div class="place-tooltip">
+                <strong>Ooty</strong><br>
+                Famous for tea gardens & cool climate
+            </div>
+        </div>
+
+        <div class="orbit-image kodaikanal" data-place="kodaikanal">
+            <div class="place-tooltip">
+                <strong>Kodaikanal</strong><br>
+                Misty hills, lakes, and peaceful nature.
+            </div>
+        </div>
+
+        <div class="orbit-image rameswaram" data-place="rameswaram">
+            <div class="place-tooltip">
+                <strong>Rameswaram</strong><br>
+                Sacred pilgrimage site with Ramanathaswamy Temple.
+            </div>
+        </div>
+
+        <div class="orbit-image madurai" data-place="madurai">
+            <div class="place-tooltip">
+                <strong>Madurai</strong><br>
+                Historic city famous for Meenakshi Amman Temple.
+            </div>
+        </div>
+
+        <div class="orbit-image thanjavur" data-place="thanjavur">
+            <div class="place-tooltip">
+                <strong>Thanjavur</strong><br>
+                Home of the Brihadeeswarar Temple and Chola architecture.
+            </div>
+        </div>
+
+        <div class="orbit-image yercaud" data-place="yercaud">
+            <div class="place-tooltip">
+                <strong>Yercaud</strong><br>
+                Calm hill station with coffee plantations.
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WRAP SECTION (MAP + VISITED) -->
+<section class="page-section" id="wrapSection">
+    
+    <!-- ✅ SOS GLOBAL BUTTON -->
+    <button id="sosBtn" class="sos-btn">SOS</button>
+
+    <div id="sosPopup" class="sos-popup hidden">
+        <h3>🚨 Emergency Help</h3>
+
+        <a href="tel:112" class="sos-option">📞 Call 112</a>
+        <a id="favCall" href="#" class="sos-option">❤️ Call Favourite</a>
+
+        <button id="closeSOS" class="close-sos">Close</button>
+    </div>
+
+    <div class="map-wrapper">
+
+        <!-- SEARCH BAR -->
+        <div class="map-search">
+            <input 
+                type="text" 
+                id="locationInput" 
+                placeholder="Search location"
+            >
+            <button 
+                id="searchBtn" 
+                type="button"
+            >
+                Search
+            </button>
+        </div>
+
+        <!-- MAP -->
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        <p id="locationStatus" style="margin-top:10px; font-size:14px;"></p>
+
+    </div>
+    <div class="location-status">
+    <p><strong>Status:</strong> <span id="locationStatus">Waiting…</span></p>
+    <p><strong>Place:</strong> <span id="placeName">—</span></p>
+    <p><strong>Last Updated:</strong> <span id="lastUpdated">—</span></p>
+</div>
+
+
+    <!-- VISITED -->
+    <div class="visited-section">
+        <h2>Visited Places</h2>
+        <div class="visited-list">
+            <div class="visited-item">
+                <h4>Ooty</h4>
+                <p>Last visited: 2 days ago</p>
+            </div>
+            <div class="visited-item">
+                <h4>Kodaikanal</h4>
+                <p>Last visited: 1 week ago</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- CONNECTIONS SECTION -->
+<section class="page-section" id="connectionsSection">
+    <div class="connections-wrapper">
+
+    <div class="connections-header">
+        <h3>❤️ Connections</h3>
+        <button id="addPersonBtn" class="circle-btn">＋</button>
+        <div class="location-section">
+  <button id="viewLocationBtn" class="circle-btn">📍 Tap to view live location</button>
+
+</div>
+
+
+<div id="friendLiveBox" class="hidden">
+    <h3 id="friendNameTitle">Live Location</h3>
+    <p>Status: <span id="friendLiveStatus">Detecting…</span></p>
+    <p>📍 <span id="friendPlace">---</span></p>
+    <p>🕒 <span id="friendTime">---</span></p>
+    <div id="friendMap" style="height:250px;border-radius:12px;"></div>
+</div>
+
+    </div>
+
+    <!-- ADD PERSON FORM -->
+    <div id="addPersonBox" class="add-person hidden">
+        <input type="text" id="personName" placeholder="Name">
+        <input type="tel" id="personPhone" placeholder="Phone number">
+        <button id="savePerson">Save</button>
+        
+    </div>
+  <div id="friendsList" style="display:none;">
+    <p>Select a connected person:</p>
+    <ul id="friendsContainer"></ul>
+  </div>
+
+    <!-- SAVED LIST -->
+    <div id="personsList"></div>
+
+</div>
+
+
+<!-- PLACE MODAL -->
+<div class="modal" id="placeModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closePlace">&times;</span>
+        <h2 id="placeTitle"></h2>
+        <p id="placeDesc"></p>
+    </div>
+</div>
+
+<!-- Leaflet JS -->
+ <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Custom JS -->
+<script src="app.js" defer></script>
+
+    <!-- ✅ SOS GLOBAL BUTTON -->
+    <button id="sosBtn" class="sos-btn">SOS</button>
+
+    <div id="sosPopup" class="sos-popup hidden">
+        <h3>🚨 Emergency Help</h3>
+
+        <a href="tel:112" class="sos-option">📞 Call 112</a>
+        <a id="favCall" href="#" class="sos-option">❤️ Call Favourite</a>
+
+        <button id="closeSOS" class="close-sos">Close</button>
+    </div>
+
+</body>
+
+</html>

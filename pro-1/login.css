@@ -1,0 +1,137 @@
+/* Reset default margins and padding for consistent styling across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling: Light blue background for the "blue color theme around it", full height, and centered content using Flexbox */
+body {
+    font-family: 'Roboto', sans-serif; /* Clean, modern font */
+    background-color: #0f1016; /* Light blue theme around the box */
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Use Flexbox for centering */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    color: #e4ebed; /* Default text color for black elements */
+}
+
+/* Login container: Wrapper for the card, ensures responsiveness */
+.login-container {
+    width: 100%; /* Full width for responsiveness */
+    max-width: 400px; /* Max width to prevent overly wide cards on large screens */
+    padding: 20px; /* Padding for mobile spacing */
+}
+
+/* Login card: White background for the "box" (surrounding container), with border and shadow for definition */
+.login-card {
+    background-color: #001f3f; /* Navy blue */
+    border: 2px solid #1b1616;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(230, 231, 232, 0.909);
+    padding: 30px;
+    text-align: center;
+    width: 450px; /* Make card bigger */
+    margin: 50px auto; /* Center on page */
+}
+
+/* h1 outside of .login-card block */
+.login-card h1 {
+    font-family: 'Pacifico', cursive; /* cursive stylish font */
+    font-weight: bold;
+    font-size: 36px;
+    color: #ffffff; /* white text on navy */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Login title: Bold, large, black text at the top */
+.login-title {
+    font-size: 2rem; /* Large font size */
+    font-weight: 700; /* Bold weight */
+    margin-bottom: 20px; /* Space below the title */
+    color: #000; /* Black color */
+}
+
+/* Login form: Container for input groups and button */
+.login-form {
+    display: flex; /* Flexbox for vertical stacking */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+/* Input group: Flex container for label on left and input on right */
+.input-group {
+    display: flex; /* Flexbox for side-by-side layout */
+    align-items: center; /* Vertically align label and input */
+    margin-bottom: 15px; /* Space between groups */
+}
+
+/* Input label: Black text on the left */
+.input-label {
+    font-weight: 700; /* Bold for emphasis */
+    margin-right: 10px; /* Space between label and input */
+    min-width: 80px; /* Fixed width for alignment */
+    color: #f4eeee; /* Black color */
+}
+
+/* Login inputs: Boxes on the right, with padding and margin for readability */
+.login-input {
+    flex: 1; /* Take remaining space on the right */
+    padding: 12px; /* Internal padding for comfort */
+    border: 1px solid #0c0c0c; /* Subtle border */
+    border-radius: 5px; /* Slight rounding for modern look */
+    font-size: 1rem; /* Readable font size */
+    background-color: #f9f9f9; /* Light background for contrast */
+    color: #101213; /* Dark text for readability */
+}
+
+/* Login button: Green, full-width with hover effect */
+.login-button {
+    width: 100%; /* Full width inside the card */
+    padding: 12px; /* Internal padding */
+    margin-top: 10px; /* Space above the button */
+    background-color: #04421e; /* Green color */
+    color: #fff; /* White text */
+    border: #06130b; /* Remove default border */
+    border-radius: 5px; /* Slight rounding */
+    font-size: 1rem; /* Readable font size */
+    font-weight: 700; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect on button: Slightly darker green */
+.login-button:hover {
+    background-color: #023e10; /* Darker green on hover */
+}
+
+/* Responsive adjustments: Ensure it looks good on smaller screens (tablet/mobile) */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+    .login-card {
+        padding: 20px; /* Reduce internal padding */
+    }
+    .login-title {
+        font-size: 1.5rem; /* Slightly smaller title on mobile */
+    }
+    .input-group {
+        flex-direction: column; /* Stack label and input vertically on mobile for better usability */
+        align-items: flex-start; /* Align to start */
+    }
+    .input-label {
+        margin-bottom: 5px; /* Add space below label on mobile */
+        min-width: auto; /* Remove fixed width on mobile */
+    }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-image: url("tour.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+}

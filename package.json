@@ -1,0 +1,12 @@
+{
+  "name": "pro-1",
+  "version": "1.0.0",
+  "description": "Backend for project",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
